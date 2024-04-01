@@ -28,16 +28,21 @@ const styles = StyleSheet.create({
 
 export default function Num() {
   const [num, setNum] = useState(0);
-  const handleClick = () => {
-    setNum((num + 1 >= 5)? 5 : num+1)
-    console.log(num);
-  }
+  // const handleClick = () => {
+  //   setNum((num + 1 >= 5)? 5 : num+1)
+  // }
+  // const handleReSet = () => {
+  //   setNum(0);
+  // }
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{num}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleClick}>
-        <Text style={styles.buttonText}>증가</Text>
+      <TouchableOpacity style={styles.button} onPress={ () => setNum(num +1)} disabled={num>=5}>
+        <Text style={styles.buttonText}>{num<5?'증가':'스톱'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={ () => setNum(0)}>
+        <Text style={styles.buttonText}>리셋</Text>
       </TouchableOpacity>
     </View>
   );
