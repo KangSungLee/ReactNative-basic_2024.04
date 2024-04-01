@@ -11,7 +11,6 @@ export default function HellowWorld() {
       }}>
       <Text>Try editing me! 🎉</Text>
       <Text>안녕 하세요.</Text>
-      
     </View>
   );
 } 
