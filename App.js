@@ -7,7 +7,7 @@ import PizzaTranslator from './components/PizzaTranslator';
 import FlatListBasic from './components/FlatListBasic';
 import SectionListBasic from './components/SectionListBasic';
 import FetchExample from './components/FetchExample';
-import Num from './components/Num';
+import Count from './components/Count';
 
 const logo ={
   uri: 'https://reactnative.dev/img/tiny_logo.png', width: 32, height: 32, };
@@ -16,7 +16,7 @@ export default function App() {
   return (
     <ScrollView>
       <Image source={logo} />
-      <Num />
+      <Count />
       <Image source={logo} />
       <FetchExample />
       <Image source={logo} />

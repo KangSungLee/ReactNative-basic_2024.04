@@ -1,19 +1,31 @@
-import React from "react"
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import React, { useState } from "react"
+import { View, StyleSheet, FlatList, Text, Image, TextInput } from "react-native";
 
 const style = StyleSheet.create({
   container: {flex:1, padding:20},
-  item: {padding:10, fontSize: 20, height: 40}
+  item: {padding:10, fontSize: 20, height: 40},
+  image: {borderRadius: 100},
+  input: { width:200, height: 30, fontSize:14, marginTop:5, borderWidth: 2, textAlign:'center'},
 });
+const img ={
+  uri: 'https://picsum.photos/200/200', width: 200, height: 200, };
 
 export default function FlatListBasic() {
+  const [fruit, setFruit] = useState([{key:'사과'},{key:'복숭아'},{key:'수박'}]);
+  const [inputValue, setInputValue] = useState('');
+  const addFruit = () => {
+    if (inputValue.trim() !== '') {
+      setFruit([...fruit, { key: inputValue }]);
+      setInputValue('');
+    }
+  };
+
   return (
     <View style={style.container}>
-      <Text style={{fontSize: 30, padding: 15, fontWeight: 'bold',}}>내가 좋아하는 과일</Text>
+      <Image source={img} style={style.image}/>
+      <TextInput placeholder="과일 이름을 입력하세요." onChangeText={(text) => setInputValue(text)} value={inputValue} onSubmitEditing={addFruit} style={style.input}/>
       <FlatList
-        data={[
-          {key:'Apple'},{key:'Banana'},{key:'Cherry'},{key:'Orange'},{key:'Mango'},
-        ]}
+        data={fruit}
         renderItem={({item}) => <Text style={style.item}>{item.key}</Text>}  
       />
     </View>
